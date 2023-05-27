@@ -6,7 +6,14 @@ using System.Threading.Tasks;
 
 namespace ECommerceStore.Domain.Entities
 {
-    internal class Product
+    public class Product
     {
+        public Guid Id { get; set; }
+
+        public string ProductName { get; set; }
+
+        public string ProductCode { get; set; }
+
+        public int StockQuantity { get; set; }
     }
 }

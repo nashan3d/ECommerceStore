@@ -1,4 +1,6 @@
-﻿using ECommerceStore.Core.Context;
+﻿using AutoMapper;
+using ECommerceStore.Core.Context;
+using ECommerceStore.Domain.Entities;
 using MediatR;
 using System;
 using System.Collections.Generic;
@@ -12,15 +14,24 @@ namespace ECommerceStore.Core.Products.Commands
     public class CreateProductHandler : IRequestHandler<CreateProductCommand,CreateProductDto>
     {
         private readonly IECommerceDbContext _context;
+        private IMapper _mapper;
 
-        public CreateProductHandler(IECommerceDbContext context)
+        public CreateProductHandler(IECommerceDbContext context, IMapper mapper)
         {
             _context = context;
+            _mapper = mapper;
         }
 
         public async Task<CreateProductDto> Handle(CreateProductCommand request, CancellationToken cancellationToken)
         {
-            throw new NotImplementedException();
+            var product = _mapper.Map<Product>(request.product);
+
+            _context.Products.Add(product);
+            await _context.SaveChangesAsync(cancellationToken);
+
+            request.product.Id = product.Id;
+
+            return request.product;
         }
     }
 }

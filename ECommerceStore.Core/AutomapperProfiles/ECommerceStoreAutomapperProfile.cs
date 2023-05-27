@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using ECommerceStore.Core.Products.Commands;
+using ECommerceStore.Core.Products.Queries.ViewProduct;
 using ECommerceStore.Domain.Entities;
 using System;
 using System.Collections.Generic;
@@ -14,6 +15,7 @@ namespace ECommerceStore.Core.AutomapperProfiles
         public ECommerceStoreAutomapperProfile()
         {
             CreateMap<CreateProductDto, Product>();
+            CreateMap<ProductDto, Product>().ReverseMap();
         }
     }
 }

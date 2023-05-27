@@ -1,4 +1,5 @@
-﻿using ECommerceStore.Infrastrcuture.Data;
+﻿using ECommerceStore.Core.Context;
+using ECommerceStore.Infrastrcuture.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -20,7 +21,9 @@ namespace ECommerceStore.Infrastrcuture
                 options.UseSqlServer(config.GetConnectionString("SqlServerConnection"));
 
             }
-            );           
+            );
+
+            services.AddScoped<IECommerceDbContext>(provider => provider.GetService<ECommerceStoreDbContext>());
 
             return services;
         }

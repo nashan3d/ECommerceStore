@@ -1,3 +1,4 @@
+using ECommerceStore.Core;
 using ECommerceStore.Infrastrcuture;
 namespace ECommerceStore.API
 {
@@ -15,6 +16,7 @@ namespace ECommerceStore.API
             builder.Services.AddSwaggerGen();
 
             builder.Services.AddInfrastructure(builder.Configuration);
+            builder.Services.AddCore();
 
             var app = builder.Build();
 

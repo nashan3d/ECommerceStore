@@ -39,7 +39,7 @@ namespace ECommerceStore.IDP.Web
                     ClientName = "Client Credentials Client",
                     AllowedGrantTypes = GrantTypes.ClientCredentials,
                     ClientSecrets = { new Secret("ClientSecret1".Sha256()) },
-                    AllowedScopes = { "CoffeeAPI.read", "CoffeeAPI.write" }
+                    AllowedScopes = { "ECommerceStoreAPI.read", "ECommerceStoreAPI.write" }
                 },
                 // interactive client using code flow + pkce
                 new Client
@@ -56,6 +56,13 @@ namespace ECommerceStore.IDP.Web
                     RequireConsent = true,
                     AllowPlainTextPkce = false
                 },
+                new Client
+                {
+                    ClientId = "postman",
+                    AllowedGrantTypes = GrantTypes.ClientCredentials,
+                    ClientSecrets = { new Secret("ClientSecret2".Sha256()) },
+                    AllowedScopes = { "ECommerceStoreAPI.read", "ECommerceStoreAPI.write" }
+                }
             };
     }
 }

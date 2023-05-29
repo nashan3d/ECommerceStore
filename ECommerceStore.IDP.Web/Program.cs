@@ -45,6 +45,7 @@ namespace ECommerceStore.IDP.Web
                             })
                             .AddDeveloperSigningCredential();
 
+            builder.Services.AddControllersWithViews();
 
             var app = builder.Build();
             app.UseStaticFiles();

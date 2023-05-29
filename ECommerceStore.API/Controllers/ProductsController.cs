@@ -1,6 +1,7 @@
 ﻿using ECommerceStore.Core.Products.Commands;
 using ECommerceStore.Core.Products.Commands.EditProduct;
 using ECommerceStore.Core.Products.Queries.ViewProduct;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -8,6 +9,7 @@ namespace ECommerceStore.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class ProductsController : BaseController
     {
 

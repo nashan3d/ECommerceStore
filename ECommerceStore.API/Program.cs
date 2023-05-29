@@ -11,6 +11,14 @@ namespace ECommerceStore.API
             // Add services to the container.
 
             builder.Services.AddControllers();
+
+            builder.Services.AddAuthentication("Bearer")
+                            .AddIdentityServerAuthentication("Bearer", options =>
+                            {
+                                options.Authority = "https://localhost:7168";
+                                options.ApiName = "ECommerceStoreAPI";
+                            });
+
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
@@ -29,6 +37,7 @@ namespace ECommerceStore.API
 
             app.UseHttpsRedirection();
 
+            app.UseAuthentication();
             app.UseAuthorization();
 
 

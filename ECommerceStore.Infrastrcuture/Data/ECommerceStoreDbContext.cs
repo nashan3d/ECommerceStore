@@ -1,6 +1,7 @@
 ﻿using ECommerceStore.Core.Context;
 using ECommerceStore.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Storage;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -27,7 +28,50 @@ namespace ECommerceStore.Infrastrcuture.Data
 
         public async Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
         {
-            return await base.SaveChangesAsync(cancellationToken);
+            int records = 0;
+            IDbContextTransaction tx = null;
+            try
+            {
+                using (tx = base.Database.BeginTransaction())
+                {
+                    records = await base.SaveChangesAsync(cancellationToken);
+                    tx.Commit();
+                    return records;
+                }
+               
+            }
+            catch (DbUpdateConcurrencyException ex)
+            {
+                foreach(var entry in ex.Entries) 
+                {
+                    if(entry.Entity is Product)
+                    {
+                        var proposedValues = entry.CurrentValues;
+                        var databaseValues = entry.GetDatabaseValues();
+
+                        foreach (var property in proposedValues.Properties)
+                        {
+                            var propsedValue = proposedValues[property];
+                            var databaseValue = databaseValues[property];
+                        }
+
+                        entry.OriginalValues.SetValues(databaseValues);
+                    }
+                    else
+                    {
+                        throw new NotSupportedException("Unable to save changes. Product Stock is Updated by another user");
+                    }                   
+
+
+                }
+
+                throw ex;
+            }
+            catch (DbUpdateException ex)
+            {
+                tx.Rollback();
+            }
+            return records;
         }
 
     }

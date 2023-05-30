@@ -22,15 +22,23 @@ namespace ECommerceStore.Core.Products.Commands.EditProduct
         }
         public async Task<bool> Handle(EditProductCommand request, CancellationToken cancellationToken)
         {
-            var currentProduct = await _context.Products.SingleOrDefaultAsync(x => x.Id == request.product.Id);
+            try
+            {
+                var currentProduct = await _context.Products.SingleOrDefaultAsync(x => x.Id == request.product.Id);
 
-            if (currentProduct == null) return false;
+                if (currentProduct == null) return false;
 
-            currentProduct.ProductName = request.product.ProductName;
-            currentProduct.StockQuantity = request.product.StockQuantity;
+                currentProduct.ProductName = request.product.ProductName;
+                currentProduct.StockQuantity = request.product.StockQuantity;
 
-            _context.Products.Update(currentProduct);
-            await _context.SaveChangesAsync(cancellationToken);  
+                _context.Products.Update(currentProduct);
+                await _context.SaveChangesAsync(cancellationToken);
+            }
+            catch (DbUpdateConcurrencyException ex)
+            {
+
+                throw new Exception("Unable to save changes. The product detatails are updated by another user. Please get the latest record");
+            }  
 
             return true;
 

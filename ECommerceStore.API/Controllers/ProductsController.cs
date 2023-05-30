@@ -24,6 +24,7 @@ namespace ECommerceStore.API.Controllers
         }
 
         [HttpPut]
+        [AllowAnonymous]
         [Authorize(Roles ="Admin,User")]
         public async Task<IActionResult> EditProduct(EditProductDto input)
         {

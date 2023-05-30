@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "ECommerceStore.Console.Client": {
+      "commandName": "Project"
+    },
+    "Docker": {
+      "commandName": "Docker"
+    }
+  }
+}

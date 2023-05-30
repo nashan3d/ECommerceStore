@@ -9,13 +9,17 @@ namespace ECommerceStore.IDP.Web
             new IdentityResource[]
             {
                 new IdentityResources.OpenId(),
-                new IdentityResources.Profile()
+                new IdentityResources.Profile(),
+                //new IdentityResource("roles", new[] { "role" })
+
             };
 
         public static IEnumerable<ApiScope> ApiScopes =>
             new ApiScope[]
             {
-                 new ApiScope("ECommerceStore.API", "Ecommerce API")
+                 new ApiScope("ECommerceStore.API", "Ecommerce API"),
+                 new ApiScope("roles",new List<string> { "role" }),
+                
             };
 
         public static IEnumerable<Client> Clients =>
@@ -71,7 +75,7 @@ namespace ECommerceStore.IDP.Web
 
                     AllowedScopes = new List<string>
                     {
-                        "ECommerceStore.API"
+                        "ECommerceStore.API", "roles", "openid" ,"profile"
                     }
                 }
             };

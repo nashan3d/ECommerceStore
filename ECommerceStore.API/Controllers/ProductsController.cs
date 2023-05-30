@@ -9,12 +9,13 @@ namespace ECommerceStore.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    // [Authorize]
+    
    
     public class ProductsController : BaseController
     {
 
         [HttpPost]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> CreateProduct(CreateProductDto input)
         {
             var result = await Mediator.Send(new CreateProductCommand(input));
@@ -23,6 +24,7 @@ namespace ECommerceStore.API.Controllers
         }
 
         [HttpPut]
+        [Authorize(Roles ="Admin,User")]
         public async Task<IActionResult> EditProduct(EditProductDto input)
         {
             var result = await Mediator.Send(new EditProductCommand(input));
@@ -31,6 +33,7 @@ namespace ECommerceStore.API.Controllers
         }
 
         [HttpGet]
+        [Authorize]
         public async Task<IActionResult> ViewProduct(Guid id)
         {
             //Guid id = new Guid();

@@ -2,6 +2,7 @@ using ECommerceStore.Core;
 using ECommerceStore.Infrastrcuture;
 using IdentityModel;
 using Microsoft.IdentityModel.Tokens;
+using System.IdentityModel.Tokens.Jwt;
 
 namespace ECommerceStore.API
 {
@@ -15,6 +16,8 @@ namespace ECommerceStore.API
 
             builder.Services.AddControllers();
 
+           
+
             builder.Services.AddAuthentication("Bearer")
                  .AddJwtBearer("Bearer", options =>
                  {
@@ -23,8 +26,8 @@ namespace ECommerceStore.API
                      options.TokenValidationParameters = new TokenValidationParameters
                      {
                          ValidateAudience = false,
-                         RoleClaimType = JwtClaimTypes.Role,
-                         NameClaimType = JwtClaimTypes.Name,
+                         RoleClaimType= JwtClaimTypes.Role,
+                         NameClaimType= JwtClaimTypes.Name,
                      };
                  });
 
@@ -33,7 +36,8 @@ namespace ECommerceStore.API
                 options.AddPolicy("ApiScope", policy =>
                 {
                     policy.RequireAuthenticatedUser();
-                    policy.RequireClaim("scope", "ECommerceStore.API");
+                    policy.RequireClaim("scope", new string[] { "ECommerceStore.API" ,"roles","openid","profile"});
+                   
                 });
             });
 

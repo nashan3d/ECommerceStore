@@ -1,4 +1,8 @@
 using ECommerceStore.IDP.Web.Data;
+using ECommerceStore.IDP.Web.Model;
+using ECommerceStore.IDP.Web.Services;
+using IdentityServer4.Services;
+using IdentityServerHost.Quickstart.UI;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
@@ -25,33 +29,27 @@ namespace ECommerceStore.IDP.Web
                 SeedData.EnsureSeedData(defaultConnection);
             }
 
-            builder.Services.AddDbContext<AspNetIdentityDbContext>(options =>
-                options.UseSqlServer(defaultConnection, b => b.MigrationsAssembly(assembly)));
-
-            builder.Services.AddIdentity<IdentityUser, IdentityRole>()
-                            .AddEntityFrameworkStores<AspNetIdentityDbContext>();
-
-            builder.Services.AddIdentityServer()
-                            .AddAspNetIdentity<IdentityUser>()
-                            .AddConfigurationStore(options =>
-                            {
-                                options.ConfigureDbContext = b =>
-                                    b.UseSqlServer(defaultConnection, opt => opt.MigrationsAssembly(assembly));
-                            })
-                            .AddOperationalStore(options =>
-                            {
-                                options.ConfigureDbContext = b =>
-                                b.UseSqlServer(defaultConnection, opt => opt.MigrationsAssembly(assembly));
-                            })
-                            .AddDeveloperSigningCredential();
+            builder.Services.AddIdentityServer(options =>
+            {
+                // see https://identityserver4.readthedocs.io/en/latest/topics/resources.html
+                options.EmitStaticAudienceClaim = true;
+            })
+                .AddInMemoryIdentityResources(Config.IdentityResources)
+                .AddInMemoryApiScopes(Config.ApiScopes)
+                .AddInMemoryClients(Config.Clients)
+                .AddTestUsers(TestUsers.Users)                
+                .AddDeveloperSigningCredential();
 
             builder.Services.AddControllersWithViews();
+            builder.Services.AddRazorPages();
+
+
 
             var app = builder.Build();
             app.UseStaticFiles();
             app.UseRouting();
             app.UseIdentityServer();
-            app.UseAuthorization();
+           
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapDefaultControllerRoute();

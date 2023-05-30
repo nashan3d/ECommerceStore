@@ -3,15 +3,19 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.5.33424.131
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ECommerceStore.API", "ECommerceStore.API\ECommerceStore.API.csproj", "{20035DD0-54E3-41C8-9791-A465A3ADB97B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ECommerceStore.API", "ECommerceStore.API\ECommerceStore.API.csproj", "{20035DD0-54E3-41C8-9791-A465A3ADB97B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ECommerceStore.Domain", "ECommerceStore.Domain\ECommerceStore.Domain.csproj", "{64B0D020-E918-4C25-87A1-8F014A691890}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ECommerceStore.Domain", "ECommerceStore.Domain\ECommerceStore.Domain.csproj", "{64B0D020-E918-4C25-87A1-8F014A691890}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ECommerceStore.Infrastrcuture", "ECommerceStore.Infrastrcuture\ECommerceStore.Infrastrcuture.csproj", "{40777110-5C64-4BE5-9F07-B24C078999F6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ECommerceStore.Infrastrcuture", "ECommerceStore.Infrastrcuture\ECommerceStore.Infrastrcuture.csproj", "{40777110-5C64-4BE5-9F07-B24C078999F6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ECommerceStore.Core", "ECommerceStore.Core\ECommerceStore.Core.csproj", "{3DBF665E-4221-446A-A260-7A6C32F3E61E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ECommerceStore.Core", "ECommerceStore.Core\ECommerceStore.Core.csproj", "{3DBF665E-4221-446A-A260-7A6C32F3E61E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ECommerceStore.IDP.Web", "ECommerceStore.IDP.Web\ECommerceStore.IDP.Web.csproj", "{80B44321-2176-4524-AB56-DE7C14B22575}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ECommerceStore.IDP.Web", "ECommerceStore.IDP.Web\ECommerceStore.IDP.Web.csproj", "{80B44321-2176-4524-AB56-DE7C14B22575}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ECommerceStore.IdentityServer", "..\QuickStart\IdentityServer\ECommerceStore.IdentityServer.csproj", "{216515FF-897A-429E-ACEC-0EC87B8247A7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ECommerceStore.Console.Client", "ECommerceStore.Console.Client\ECommerceStore.Console.Client.csproj", "{30DB84FC-C190-4D73-97A5-EFFF5B962F32}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +43,14 @@ Global
 		{80B44321-2176-4524-AB56-DE7C14B22575}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{80B44321-2176-4524-AB56-DE7C14B22575}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{80B44321-2176-4524-AB56-DE7C14B22575}.Release|Any CPU.Build.0 = Release|Any CPU
+		{216515FF-897A-429E-ACEC-0EC87B8247A7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{216515FF-897A-429E-ACEC-0EC87B8247A7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{216515FF-897A-429E-ACEC-0EC87B8247A7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{216515FF-897A-429E-ACEC-0EC87B8247A7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{30DB84FC-C190-4D73-97A5-EFFF5B962F32}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{30DB84FC-C190-4D73-97A5-EFFF5B962F32}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{30DB84FC-C190-4D73-97A5-EFFF5B962F32}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{30DB84FC-C190-4D73-97A5-EFFF5B962F32}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -181,15 +181,15 @@ namespace ECommerceStore.IDP.Web
                 context.SaveChanges();
             }
 
-            if (!context.ApiResources.Any())
-            {
-                foreach (var resource in Config.ApiResources.ToList())
-                {
-                    context.ApiResources.Add(resource.ToEntity());
-                }
+            //if (!context.ApiResources.Any())
+            //{
+            //    foreach (var resource in Config.IdentityResources.ToList())
+            //    {
+            //        context.ApiResources.Add(resource.ToEntity());
+            //    }
 
-                context.SaveChanges();
-            }
+            //    context.SaveChanges();
+            //}
         }
     }
 }

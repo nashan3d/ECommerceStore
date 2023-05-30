@@ -9,7 +9,8 @@ namespace ECommerceStore.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    [Authorize]
+    // [Authorize]
+   
     public class ProductsController : BaseController
     {
 
@@ -32,6 +33,7 @@ namespace ECommerceStore.API.Controllers
         [HttpGet]
         public async Task<IActionResult> ViewProduct(Guid id)
         {
+            //Guid id = new Guid();
             var result = await Mediator.Send(new ViewProductQuery(id));
 
             return Ok(result);

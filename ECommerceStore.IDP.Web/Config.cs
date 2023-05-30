@@ -1,68 +1,80 @@
-﻿using IdentityServer4.Models;
+﻿using IdentityServer4;
+using IdentityServer4.Models;
 
 namespace ECommerceStore.IDP.Web
 {
     public class Config
     {
         public static IEnumerable<IdentityResource> IdentityResources =>
-            new[]
+            new IdentityResource[]
             {
                 new IdentityResources.OpenId(),
-                new IdentityResources.Profile(),
-                new IdentityResource
-                {
-                    Name = "role",
-                    UserClaims = new List<string> { "role" }
-                }
+                new IdentityResources.Profile()
             };
 
         public static IEnumerable<ApiScope> ApiScopes =>
-            new[] { new ApiScope("ECommerceStoreAPI.read"), new ApiScope("ECommerceStoreAPI.write"), };
-        public static IEnumerable<ApiResource> ApiResources =>
-            new[]
+            new ApiScope[]
             {
-                new ApiResource("ECommerceStoreAPI")
-                {
-                    Scopes = new List<string> { "ECommerceStoreAPI.read", "ECommerceStoreAPI.write" },
-                    ApiSecrets = new List<Secret> { new Secret("ScopeSecret".Sha256()) },
-                    UserClaims = new List<string> { "role" }
-                }
+                 new ApiScope("ECommerceStore.API", "Ecommerce API")
             };
 
         public static IEnumerable<Client> Clients =>
-            new[]
+            new List<Client>
             {
-                // m2m client credentials flow client
                 new Client
                 {
-                    ClientId = "m2m.client",
-                    ClientName = "Client Credentials Client",
-                    AllowedGrantTypes = GrantTypes.ClientCredentials,
-                    ClientSecrets = { new Secret("ClientSecret1".Sha256()) },
-                    AllowedScopes = { "ECommerceStoreAPI.read", "ECommerceStoreAPI.write" }
-                },
-                // interactive client using code flow + pkce
-                new Client
-                {
-                    ClientId = "interactive",
-                    ClientSecrets = { new Secret("ClientSecret1".Sha256()) },
+                    ClientId = "client",
+
+                    // no interactive user, use the clientid/secret for authentication
                     AllowedGrantTypes = GrantTypes.Code,
-                    RedirectUris = { "https://localhost:5444/signin-oidc" },
-                    FrontChannelLogoutUri = "https://localhost:5444/signout-oidc",
-                    PostLogoutRedirectUris = { "https://localhost:5444/signout-callback-oidc" },
-                    AllowOfflineAccess = true,
-                    AllowedScopes = { "openid", "profile", "ECommerceStoreAPI.read" },
-                    RequirePkce = true,
-                    RequireConsent = true,
-                    AllowPlainTextPkce = false
+
+                    // secret for authentication
+                    ClientSecrets =
+                    {
+                        new Secret("secret".Sha256())
+                    },
+
+                    // scopes that client has access to
+                    AllowedScopes = { "ECommerceStore.API" }
                 },
-                new Client
+                 new Client
+                {
+                    ClientId = "mvc",
+                    ClientSecrets = { new Secret("secret".Sha256()) },
+
+                    AllowedGrantTypes = GrantTypes.Code,
+
+                    // where to redirect to after login
+                    RedirectUris = { "https://localhost:7095/signin-oidc" },
+
+                    // where to redirect to after logout
+                    PostLogoutRedirectUris = { "https://localhost:7095/signout-callback-oidc" },
+
+                    AllowedScopes = new List<string>
+                    {
+                        IdentityServerConstants.StandardScopes.OpenId,
+                        IdentityServerConstants.StandardScopes.Profile
+                    }
+                }
+                 ,new Client
                 {
                     ClientId = "postman",
-                    AllowedGrantTypes = GrantTypes.ClientCredentials,
-                    ClientSecrets = { new Secret("ClientSecret2".Sha256()) },
-                    AllowedScopes = { "ECommerceStoreAPI.read", "ECommerceStoreAPI.write" }
+                    ClientSecrets = { new Secret("secret".Sha256()) },
+
+                    AllowedGrantTypes = GrantTypes.Code,
+
+                    // where to redirect to after login
+                    RedirectUris = { "https://oauth.pstmn.io/v1/callback" },
+
+                    // where to redirect to after logout
+                    //PostLogoutRedirectUris = { "https://localhost:7095/signout-callback-oidc" },
+
+                    AllowedScopes = new List<string>
+                    {
+                        "ECommerceStore.API"
+                    }
                 }
             };
     }
 }
+ 

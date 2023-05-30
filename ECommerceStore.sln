@@ -13,9 +13,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ECommerceStore.Core", "ECom
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ECommerceStore.IDP.Web", "ECommerceStore.IDP.Web\ECommerceStore.IDP.Web.csproj", "{80B44321-2176-4524-AB56-DE7C14B22575}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ECommerceStore.IdentityServer", "..\QuickStart\IdentityServer\ECommerceStore.IdentityServer.csproj", "{216515FF-897A-429E-ACEC-0EC87B8247A7}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ECommerceStore.Console.Client", "ECommerceStore.Console.Client\ECommerceStore.Console.Client.csproj", "{30DB84FC-C190-4D73-97A5-EFFF5B962F32}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ECommerceStore.Console.Client", "ECommerceStore.Console.Client\ECommerceStore.Console.Client.csproj", "{30DB84FC-C190-4D73-97A5-EFFF5B962F32}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -43,10 +41,6 @@ Global
 		{80B44321-2176-4524-AB56-DE7C14B22575}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{80B44321-2176-4524-AB56-DE7C14B22575}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{80B44321-2176-4524-AB56-DE7C14B22575}.Release|Any CPU.Build.0 = Release|Any CPU
-		{216515FF-897A-429E-ACEC-0EC87B8247A7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{216515FF-897A-429E-ACEC-0EC87B8247A7}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{216515FF-897A-429E-ACEC-0EC87B8247A7}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{216515FF-897A-429E-ACEC-0EC87B8247A7}.Release|Any CPU.Build.0 = Release|Any CPU
 		{30DB84FC-C190-4D73-97A5-EFFF5B962F32}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{30DB84FC-C190-4D73-97A5-EFFF5B962F32}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{30DB84FC-C190-4D73-97A5-EFFF5B962F32}.Release|Any CPU.ActiveCfg = Release|Any CPU

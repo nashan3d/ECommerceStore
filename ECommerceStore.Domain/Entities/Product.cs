@@ -15,5 +15,7 @@ namespace ECommerceStore.Domain.Entities
         public string ProductCode { get; set; }
 
         public int StockQuantity { get; set; }
+
+        public byte[] RowVersion { get; set; }
     }
 }

@@ -1,0 +1,15 @@
+version: '3.4'
+
+services:
+  ecommercestore.api:
+    image: ${DOCKER_REGISTRY-}ecommercestoreapi
+    build:
+      context: .
+      dockerfile: ECommerceStore.API/Dockerfile
+
+  ecommercestore.idp.web:
+    image: ${DOCKER_REGISTRY-}ecommercestoreidpweb
+    build:
+      context: .
+      dockerfile: ECommerceStore.IDP.Web/Dockerfile
+

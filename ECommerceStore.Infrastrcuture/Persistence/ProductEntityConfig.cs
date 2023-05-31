@@ -16,6 +16,7 @@ namespace ECommerceStore.Infrastrcuture.Persistence
             builder.HasKey(x => x.Id);
             builder.Property(x => x.RowVersion)
                     .HasColumnType("timestamp")
+                    .ValueGeneratedOnAddOrUpdate()
                     .IsConcurrencyToken();
         }
     }

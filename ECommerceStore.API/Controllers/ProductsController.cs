@@ -15,7 +15,7 @@ namespace ECommerceStore.API.Controllers
     {
 
         [HttpPost]
-        [Authorize(Roles = "Admin")]
+        [Authorize(Policy = "AdminPolicy")]
         public async Task<IActionResult> CreateProduct(CreateProductDto input)
         {
             var result = await Mediator.Send(new CreateProductCommand(input));
@@ -25,7 +25,7 @@ namespace ECommerceStore.API.Controllers
 
         [HttpPut]
         [AllowAnonymous]
-        [Authorize(Roles ="Admin,User")]
+        [Authorize(Policy = "UserPolicy")]
         public async Task<IActionResult> EditProduct(EditProductDto input)
         {
             var result = await Mediator.Send(new EditProductCommand(input));

@@ -17,8 +17,9 @@ namespace ECommerceStore.IDP.Web
         public static IEnumerable<ApiScope> ApiScopes =>
             new ApiScope[]
             {
-                 new ApiScope("ECommerceStore.API", "Ecommerce API"),
-                 new ApiScope("roles",new List<string> { "role" }),
+                 new ApiScope("ECommerceStore.API", "Ecommerce API",new List<string>{"role","UserRole"}),
+                 new ApiScope("role",new List<string> { "role" }),
+                 
                 
             };
 
@@ -75,7 +76,7 @@ namespace ECommerceStore.IDP.Web
 
                     AllowedScopes = new List<string>
                     {
-                        "ECommerceStore.API", "roles", "openid" ,"profile"
+                        "ECommerceStore.API", "role", "openid" ,"profile"
                     }
                 }
             };

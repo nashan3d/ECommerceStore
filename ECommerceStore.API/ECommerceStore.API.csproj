@@ -5,7 +5,8 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <UserSecretsId>18c3311c-b433-4c96-a56d-81806aba5c07</UserSecretsId>
-    <DockerDefaultTargetOS>Windows</DockerDefaultTargetOS>
+    <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+    <DockerComposeProjectPath>..\docker-compose.dcproj</DockerComposeProjectPath>
   </PropertyGroup>
 
   <ItemGroup>
@@ -21,6 +22,11 @@
 
   <ItemGroup>
     <ProjectReference Include="..\ECommerceStore.Infrastrcuture\ECommerceStore.Infrastrcuture.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="..\.dockerignore" />
+    <None Remove="Dockerfile.original" />
   </ItemGroup>
 
   <ItemGroup>

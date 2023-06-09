@@ -34,3 +34,7 @@ steps:
     platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
 
+pr:
+- main
+- feature/*
+

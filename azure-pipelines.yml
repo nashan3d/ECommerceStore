@@ -34,5 +34,6 @@ steps:
     configuration: '$(buildConfiguration)'
 
 trigger:
+- master
 - main
 - feature/*

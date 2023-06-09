@@ -57,7 +57,7 @@ namespace ECommerceStore.API
                 {
                     policy.RequireAuthenticatedUser();
                     policy.RequireClaim("scope", new string[] { "ECommerceStore.API", "role", "openid", "profile" });
-                    //policy.RequireClaim("UserRole", new string[] { "User","Admin"});                  
+                    policy.RequireClaim("UserRole", new List<string>{ "User","Admin"});                  
 
                 });
             });

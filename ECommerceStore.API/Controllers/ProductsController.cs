@@ -24,7 +24,6 @@ namespace ECommerceStore.API.Controllers
         }
 
         [HttpPut]
-        [AllowAnonymous]
         [Authorize(Policy = "UserPolicy")]
         public async Task<IActionResult> EditProduct(EditProductDto input)
         {
